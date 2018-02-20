@@ -44,20 +44,20 @@ class game:
         return self._reward
 
 
-class Realization:
-    def __init__(self, id, realization_number, head_prob):
-        self._realizations = []
+class cohort:
+    def __init__(self, id, cohort_number, head_prob):
+        self._cohorts = []
         self._expValue = []
         n = 1
-        while n <= realization_number:
-            realization = game(id * realization_number + n, head_prob)
-            self._realizations.append(realization)
+        while n <= cohort_number:
+            cohort = game(id * cohort_number + n, head_prob)
+            self._cohorts.append(cohort)
             n += 1
 
     def simulate(self, n_time_steps):
-        for realization in self._realizations:
-            realization.simulate(n_time_steps)
-            value = realization.get_exp_value(n_time_steps)
+        for cohort in self._cohorts:
+            cohort.simulate(n_time_steps)
+            value = cohort.get_exp_value(n_time_steps)
             if not (value is None):
                 self._expValue.append(value)
 
